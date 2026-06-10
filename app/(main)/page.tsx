@@ -1,4 +1,5 @@
 import FAQ from '../../components/home/FAQ';
+import ForYou from '../../components/home/ForYou';
 import Hero from '../../components/home/Hero';
 import HowToConnect from '../../components/home/HowToConnect';
 import MeetOurMedium from '../../components/home/MeetOutMedium';
@@ -9,9 +10,10 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen w-full overflow-hidden">
       <Hero />
-      <FAQ />
-      <HowToConnect />
+      <ForYou />
       <WhyChoose />
+      <HowToConnect />
+      <FAQ />
       <MeetOurMedium />
     </main>
   );

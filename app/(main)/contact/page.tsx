@@ -32,6 +32,7 @@ export default function ContactPage() {
     },
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const selectedSubject = watch('subject');
 
   const onSubmit = (data: ContactFormValues) => {

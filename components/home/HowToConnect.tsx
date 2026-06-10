@@ -46,8 +46,8 @@ export default function HowToConnect() {
   const inView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="bg-[#E5E5E5] py-20 md:py-32">
-      <div className="container mx-auto px-6 md:px-10 lg:px-20 flex flex-col items-center">
+    <section ref={ref} className="">
+      <div className="container mx-auto px-6 md:px-10 lg:px-20 flex flex-col items-center ">
 
         {/* Header Section */}
         <div className="text-center mb-16 space-y-6">
@@ -63,7 +63,7 @@ export default function HowToConnect() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[#1A1A1A] font-bold text-4xl md:text-6xl tracking-tight"
+            className="text-[#1A1A1A] font-bold text-4xl md:text-5xl tracking-tight"
           >
             Choose How to Connect
           </motion.h2>
@@ -71,14 +71,14 @@ export default function HowToConnect() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#666666] text-lg md:text-xl font-medium"
+            className="text-[#666666] text-lg font-medium"
           >
             Select the consultation method that feels right for you
           </motion.p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full ">
           {connectionMethods.map((method, i) => {
             const Icon = method.icon;
             return (
@@ -88,8 +88,8 @@ export default function HowToConnect() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
                 className={cn(
-                  "relative bg-[#F2F2F2] rounded-[32px] p-8 md:p-10 flex flex-col h-full border-2 transition-all duration-300",
-                  method.popular ? "border-primary shadow-2xl" : "border-transparent hover:bg-white"
+                  "relative border rounded-xl p-8 md:p-10 flex flex-col h-full border-2 transition-all duration-300",
+                  method.popular ? "border-primary shadow-2xl" : "border-gray-100 hover:bg-white"
                 )}
               >
                 {method.popular && (
@@ -98,7 +98,7 @@ export default function HowToConnect() {
                   </div>
                 )}
 
-                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center text-white mb-8">
+                <div className="w-14 h-14 rounded-sm bg-primary flex items-center justify-center text-white mb-8">
                   <Icon size={28} />
                 </div>
 

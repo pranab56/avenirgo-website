@@ -15,12 +15,12 @@ export default function WhyChoose() {
   ];
 
   return (
-    <section ref={ref} className="bg-[#E5E5E5] py-20 md:py-32 overflow-hidden">
+    <section ref={ref} className="py-20 md:py-32 mt-10 lg:mt-20 overflow-hidden">
       <div className="container mx-auto px-6 md:px-10 lg:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
           {/* Left Content */}
-          <div className="space-y-8 max-w-xl">
+          <div className="space-y-8 max-w-xl lg:-mt-35">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -30,7 +30,7 @@ export default function WhyChoose() {
               <div className="inline-block px-4 py-1.5 bg-primary/10 rounded-full">
                 <span className="text-primary text-sm font-semibold tracking-wide">Features</span>
               </div>
-              <h2 className="text-[#1A1A1A] font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
+              <h2 className="text-[#1A1A1A] font-bold text-4xl md:text-5xl lg:text-5xl tracking-tight leading-tight">
                 Why Choose <span className="text-primary">AvenirGo</span>
               </h2>
               <p className="text-[#4A4A4A] text-lg font-medium leading-relaxed">
@@ -57,27 +57,28 @@ export default function WhyChoose() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <button className="bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95">
+              <button className="bg-primary text-white font-medium cursor-pointer px-8 py-4 rounded-sm shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95">
                 Get Started
               </button>
             </motion.div>
           </div>
 
-          {/* Right Cards Layout */}
-          <div className="relative h-[500px] md:h-[600px] flex items-center justify-center lg:justify-end">
+          {/* Right Cards Layout — stacked on mobile, overlapping on desktop */}
+          <div className="flex flex-col gap-4 lg:relative lg:h-[600px] lg:flex-none">
 
             {/* Card 1: Verified Mediums */}
             <motion.div
               initial={{ opacity: 0, y: 40, x: -20 }}
               animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute top-0 left-0 lg:left-[-50px] z-10 w-[280px] md:w-[350px] bg-[#F8F8F8] p-8 rounded-[32px] shadow-xl border border-white/50"
+              className="bg-[#F8F8F8] p-6 lg:p-8 rounded-sm shadow-xl border border-white/50
+                lg:absolute lg:top-0 lg:left-[-50px] lg:z-10 lg:w-full"
             >
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
                 <Shield size={24} />
               </div>
               <h3 className="text-[#1A1A1A] font-bold text-xl mb-3">Verified Mediums</h3>
-              <p className="text-[#666666] text-sm font-medium leading-relaxed">
+              <p className="text-[#666666] text-sm font-medium leading-relaxed lg:w-80">
                 All our psychics are carefully vetted and verified for authenticity and professionalism.
               </p>
             </motion.div>
@@ -87,7 +88,8 @@ export default function WhyChoose() {
               initial={{ opacity: 0, y: 40, x: 20 }}
               animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute bottom-10 left-0 lg:left-[-20px] z-30 w-[280px] md:w-[350px] bg-primary p-8 rounded-[32px] shadow-2xl"
+              className="bg-primary p-6 lg:p-8 rounded-sm shadow-2xl
+                lg:absolute lg:top-65 lg:left-[-50px] lg:z-10 lg:w-[450px]"
             >
               <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white mb-6">
                 <Star size={24} />
@@ -103,7 +105,8 @@ export default function WhyChoose() {
               initial={{ opacity: 0, scale: 0.9, x: 40 }}
               animate={inView ? { opacity: 1, scale: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="absolute top-[150px] right-0 z-20 w-[280px] md:w-[350px] bg-[#F8F8F8] p-8 rounded-[32px] shadow-xl border border-white/50"
+              className="bg-[#F8F8F8] p-6 lg:p-8 rounded-sm shadow-xl border border-white/50
+                lg:absolute lg:top-[150px] lg:right-0 lg:z-20 lg:w-[350px]"
             >
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
                 <Clock size={24} />

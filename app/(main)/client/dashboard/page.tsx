@@ -45,21 +45,21 @@ export default function WalletPage() {
     <>
       <div className="space-y-4">
         {/* Balance card */}
-        <div className="bg-gradient-to-r from-violet-600 to-purple-700 rounded-2xl px-8 py-7 flex items-center justify-between shadow-lg shadow-violet-500/20">
+        <div className="bg-gradient-to-r from-violet-600 to-purple-700 rounded-lg px-6 sm:px-8 py-6 sm:py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-lg shadow-violet-500/20">
           <div>
             <p className="text-white/70 text-sm mb-1">Available Balance</p>
-            <p className="text-white text-5xl font-black">${balance.toFixed(2)}</p>
+            <p className="text-white text-4xl sm:text-5xl font-black">${balance.toFixed(2)}</p>
           </div>
           <button
             onClick={() => setTopUpOpen(true)}
-            className="px-7 py-2.5 bg-white text-violet-700 hover:bg-violet-50 font-bold text-sm rounded-xl transition-all active:scale-[0.98] shadow-sm"
+            className="w-full sm:w-auto px-7 py-2.5 bg-white text-violet-700 hover:bg-violet-50 font-medium text-sm rounded-sm cursor-pointer transition-all active:scale-[0.98] shadow-sm"
           >
             Top Up
           </button>
         </div>
 
         {/* Transactions card */}
-        <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           {/* Tab header */}
           <div className="px-6 border-b border-gray-100">
             <div className="inline-block py-4 text-sm font-bold text-violet-600 border-b-2 border-violet-600 -mb-px">
@@ -125,12 +125,12 @@ export default function WalletPage() {
               exit={{ opacity: 0, scale: 0.95, y: 12 }}
               className="fixed inset-0 z-50 flex items-center justify-center px-4"
             >
-              <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-6 space-y-5">
+              <div className="bg-white rounded-lg shadow-2xl w-full max-w-sm p-6 space-y-5">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-lg text-[#1A1A1A]">Top Up Wallet</h3>
                   <button
                     onClick={() => setTopUpOpen(false)}
-                    className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+                    className="w-7 h-7 rounded-full bg-gray-100 cursor-pointer flex items-center justify-center hover:bg-gray-200 transition-colors"
                   >
                     <X size={14} />
                   </button>
@@ -142,7 +142,7 @@ export default function WalletPage() {
                       key={amt}
                       onClick={() => setTopUpAmount(String(amt))}
                       className={cn(
-                        'px-4 py-2 rounded-xl text-sm font-bold transition-all border-2',
+                        'px-4 py-2 rounded-xl text-sm cursor-pointer font-medium transition-all border-2',
                         topUpAmount === String(amt)
                           ? 'border-violet-500 bg-violet-50 text-violet-700'
                           : 'border-gray-200 text-gray-600 hover:border-violet-300'
@@ -154,7 +154,7 @@ export default function WalletPage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Custom Amount</label>
+                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Custom Amount</label>
                   <div className="relative mt-1.5">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
                     <input
@@ -163,7 +163,7 @@ export default function WalletPage() {
                       value={topUpAmount}
                       onChange={e => setTopUpAmount(e.target.value)}
                       placeholder="0.00"
-                      className="w-full h-11 pl-8 pr-4 rounded-xl border border-gray-200 text-sm font-bold text-[#1A1A1A] outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+                      className="w-full h-11 pl-8 pr-4 rounded-xl border border-gray-200 text-sm font-medium text-[#1A1A1A] outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
                     />
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function WalletPage() {
                 <button
                   onClick={handleTopUp}
                   disabled={!topUpAmount}
-                  className="w-full py-3.5 rounded-2xl bg-violet-600 hover:bg-violet-700 disabled:opacity-40 text-white font-bold text-sm transition-all active:scale-[0.98] shadow-lg shadow-violet-500/20"
+                  className="w-full py-3.5 rounded-2xl bg-violet-600 cursor-pointer hover:bg-violet-700 disabled:opacity-40 text-white font-medium text-sm transition-all active:scale-[0.98] shadow-lg shadow-violet-500/20"
                 >
                   Add Funds
                 </button>

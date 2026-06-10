@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { baseURL } from '@/utils/BaseURL';
 import { baseApi } from '@/utils/apiBaseQuery';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Bell, Calendar, Heart, LayoutDashboard, LogOut, Menu, MessageSquare, ShoppingBag, User, Wallet, X } from 'lucide-react';
+import { Bell, Calendar, Heart, LayoutDashboard, LogOut, Menu, MessageSquare, ShoppingBag, Wallet, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -78,12 +78,14 @@ export function Navbar() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClientMode, setIsClientMode] = useState(true);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const pathname = usePathname();
   const profileRef = useRef<HTMLDivElement>(null);
 
   const handleLogout = () => {
     dispatch(logout());
     setProfileOpen(false);
+    setShowLogoutModal(false);
     router.push('/login');
   };
 
@@ -111,10 +113,10 @@ export function Navbar() {
         {/* Left: Logo & Brand */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5 shadow-sm">
-              <Image src="/icons/logo.png" alt="Logo" width={32} height={32} className="w-full h-auto object-contain" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-sm flex items-center justify-center p-1.5 shadow-sm">
+              <Image src="/icons/logo2.png" alt="Logo" width={1000} height={1000} className="w-full h-auto object-contain" />
             </div>
-            <span className="text-white text-2xl font-semibold tracking-tight">AvenirGo</span>
+            <span className="text-white text-xl sm:text-2xl font-semibold tracking-tight">AvenirGo</span>
           </Link>
         </div>
 
@@ -140,7 +142,7 @@ export function Navbar() {
         </div>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Mode Toggle */}
           <div className="hidden md:flex items-center bg-white rounded-xl px-4 h-12 gap-4 shadow-sm">
             <span className={cn("text-sm font-medium transition-colors", !isClientMode ? "text-primary" : "text-primary/60")}>Medium</span>
@@ -207,10 +209,6 @@ export function Navbar() {
                     </div>
 
                     <div className="mt-4 flex flex-col gap-1">
-                      <Link href="/profile" onClick={() => setProfileOpen(false)} className="flex items-center gap-3 p-2.5 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-primary transition-all text-sm">
-                        <User size={16} />
-                        Profile
-                      </Link>
                       <Link
                         href={isClientMode ? '/client/dashboard' : '/medium/dashboard'}
                         onClick={() => setProfileOpen(false)}
@@ -220,8 +218,8 @@ export function Navbar() {
                         My Dashboard
                       </Link>
                       <button
-                        onClick={handleLogout}
-                        className="flex items-center gap-3 p-2.5 rounded-lg text-red-500 hover:bg-red-50/50 transition-all text-sm w-full text-left"
+                        onClick={() => { setProfileOpen(false); setShowLogoutModal(true); }}
+                        className="flex items-center gap-3 p-2.5 rounded-lg text-red-500 hover:bg-red-50/50 transition-all text-sm w-full text-left cursor-pointer"
                       >
                         <LogOut size={16} />
                         Logout
@@ -248,6 +246,51 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Logout Confirmation Modal */}
+      <AnimatePresence>
+        {showLogoutModal && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[120]"
+              onClick={() => setShowLogoutModal(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="fixed inset-0 z-[130] flex items-center justify-center px-4"
+            >
+              <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 space-y-5">
+                <div className="flex flex-col items-center text-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                    <LogOut size={20} className="text-red-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-[#1A1A1A]">Log out?</h3>
+                    <p className="text-sm text-gray-500 mt-1">Are you sure you want to log out of your account?</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowLogoutModal(false)}
+                    className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="flex-1 py-2.5 rounded-lg bg-red-500 hover:bg-red-600 text-white text-sm font-medium transition-colors cursor-pointer"
+                  >
+                    Log out
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

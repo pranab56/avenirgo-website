@@ -17,18 +17,18 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={ref} className="relative min-h-[90vh] w-full flex items-center bg-[#E5E5E5] pt-20 pb-32 overflow-hidden">
+    <section ref={ref} className="relative min-h-[90vh] w-full flex items-center pt-30 pb-32 overflow-hidden">
       <div className="container mx-auto px-6 md:px-10 lg:px-20 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left Content */}
-          <div className="flex flex-col space-y-8 max-w-2xl">
+          <div className="flex flex-col space-y-8 mt-5 max-w-2xl">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="text-[#1A1A1A] font-bold leading-[1.1] tracking-tight"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 3.5rem)' }}
             >
               Connect with trusted psychics <span className="text-primary italic relative">instantly
                 <span className="absolute bottom-2 left-0 w-full h-1 bg-primary/20 -z-10 rounded-full" />
@@ -50,11 +50,11 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-[4/3] w-full max-w-[600px] ml-auto"
+            className="relative aspect-[4/3] w-full max-w-[550px] ml-auto"
           >
-            <div className="absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 rounded-lg h-[550px] overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1000&auto=format&fit=crop"
+                src="/images/hero.jpg"
                 alt="Psychic cards and crystal ball"
                 fill
                 className="object-cover"
@@ -69,19 +69,19 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-16 lg:mt-[-80px] relative z-30 inline-block w-full lg:w-fit"
+          className="relative z-30 w-full lg:w-fit"
         >
-          <div className="bg-[#F8F8F8] rounded-[30px] p-8 md:p-10 shadow-xl border border-white/50 flex flex-wrap lg:flex-nowrap items-center gap-10 md:gap-16">
+          <div className="bg-[#F8F8F8] rounded-[24px] md:rounded-[30px] p-6 md:p-10 shadow-xl border border-white/50 grid grid-cols-2 lg:flex lg:flex-nowrap items-center gap-6 md:gap-10 lg:gap-16">
             {stats.map((stat, i) => (
-              <div key={stat.label} className="flex items-center gap-10 md:gap-16">
-                <div className="flex flex-col items-center lg:items-start space-y-1 min-w-[120px]">
+              <div key={stat.label} className="flex items-center gap-6 lg:gap-16">
+                <div className="flex flex-col items-center lg:items-start space-y-1">
                   <span className={cn(
-                    "text-4xl md:text-5xl font-bold tracking-tight",
+                    "text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight",
                     stat.highlight ? "text-primary" : "text-[#1A1A1A]"
                   )}>
                     {stat.value}
                   </span>
-                  <span className="text-[#666666] text-sm font-semibold uppercase tracking-wider">
+                  <span className="text-[#666666] text-xs md:text-sm font-semibold uppercase tracking-wider">
                     {stat.label}
                   </span>
                 </div>

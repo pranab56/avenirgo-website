@@ -16,13 +16,13 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
           <Link 
             href="/contact" 
-            className="w-full sm:w-auto min-w-[180px] h-14 flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white font-semibold hover:bg-white/20 transition-all shadow-lg backdrop-blur-sm"
+            className="w-full sm:w-auto min-w-[180px] h-14 flex items-center justify-center rounded-lg cursor-pointer border border-white/20 bg-white/10 text-white font-medium hover:bg-white/20 transition-all shadow-lg backdrop-blur-sm"
           >
             Contact Us
           </Link>
           <Link 
             href="/become-medium" 
-            className="w-full sm:w-auto min-w-[180px] h-14 flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white font-semibold hover:bg-white/20 transition-all shadow-lg backdrop-blur-sm"
+            className="w-full sm:w-auto min-w-[180px] h-14 flex items-center justify-center rounded-lg cursor-pointer border border-white/20 bg-white/10 text-white font-medium hover:bg-white/20 transition-all shadow-lg backdrop-blur-sm"
           >
             Become a Medium
           </Link>

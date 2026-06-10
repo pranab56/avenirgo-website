@@ -2,14 +2,14 @@
 
 import { useLoginMutation } from '@/features/auth/authApi';
 import { setCredentials } from '@/features/auth/authSlice';
+import { motion } from 'framer-motion';
 import { Eye, EyeOff } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
 
 const DEMO_CREDENTIALS = { email: 'demo@gmail.com', password: 'hello123' };
 const DEMO_USER = {
@@ -31,7 +31,7 @@ export default function LoginPage() {
   const [remember, setRemember] = useState(false);
   const [demoLoading, setDemoLoading] = useState(false);
 
-  const loginWithCredentials = (credentials: { email: string; password: string }) => {
+  const loginWithCredentials = (_credentials: { email: string; password: string }) => {
     dispatch(setCredentials({ token: 'demo-token-' + Date.now(), refreshToken: 'demo-refresh', user: DEMO_USER }));
     toast.success('Welcome back, Demo User!');
     router.push('/');
@@ -80,9 +80,8 @@ export default function LoginPage() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-7">
-          <div className="w-28 h-28 bg-violet-700 rounded-3xl flex flex-col items-center justify-center gap-1.5 shadow-lg">
-            <Image src="/icons/logo.png" alt="AvenirGo" width={44} height={44} className="object-contain" />
-            <span className="text-white font-bold text-sm">AvenirGo</span>
+          <div className="w-38 h-38 rounded-3xl">
+            <Image src="/icons/logo.png" alt="AvenirGo" width={1000} height={1000} className="object-contain rounded-lg" />
           </div>
         </div>
 
@@ -162,7 +161,7 @@ export default function LoginPage() {
         <p className="text-center text-sm text-[#666666] mt-5">
           If have an account?{' '}
           <Link href="/signup" className="font-bold text-[#1A1A1A] hover:text-violet-600 transition-colors">
-            Login
+            SignUp
           </Link>
         </p>
       </motion.div>

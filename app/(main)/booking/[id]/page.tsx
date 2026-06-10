@@ -9,7 +9,6 @@ import {
   Info,
   MessageCircle,
   Mic,
-  PhoneCall,
   Users,
 } from 'lucide-react';
 import Image from 'next/image';

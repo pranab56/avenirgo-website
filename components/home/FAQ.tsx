@@ -51,7 +51,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="bg-[#E5E5E5] py-20 md:py-32">
+    <section className="py-20 md:py-32">
       <div className="container mx-auto px-4 sm:px-6 flex flex-col items-center">
 
         {/* Header Section */}
@@ -59,10 +59,10 @@ const FAQ = () => {
           <div className="inline-block px-4 py-1.5 bg-primary/10 rounded-full">
             <span className="text-primary text-sm font-semibold tracking-wide">Frequently Asked Questions</span>
           </div>
-          <h2 className="text-[#1A1A1A] font-bold text-4xl md:text-6xl tracking-tight">
+          <h2 className="text-[#1A1A1A] font-bold text-4xl md:text-5xl tracking-tight">
             FAQs
           </h2>
-          <p className="text-[#666666] text-lg md:text-xl font-medium">
+          <p className="text-[#666666] text-lg md:text-lg font-medium">
             Answers to common questions about our platform
           </p>
         </div>

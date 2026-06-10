@@ -407,7 +407,7 @@ export default function ProfilePage({ params }: { params: Promise<{ id: string }
                       <CheckCircle2 size={28} className="text-green-500" />
                     </div>
                     <p className="font-bold text-[#1A1A1A]">Question Sent!</p>
-                    <p className="text-sm text-[#666666]">You'll receive a detailed response within 24–48 hours.</p>
+                    <p className="text-sm text-[#666666]">{"You'll receive a detailed response within 24–48 hours."}</p>
                     <button
                       onClick={() => setAskOpen(false)}
                       className="mt-2 px-6 py-2.5 bg-violet-600 text-white font-bold rounded-xl text-sm hover:bg-violet-700 transition-colors"

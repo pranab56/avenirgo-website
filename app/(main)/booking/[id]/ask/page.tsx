@@ -130,7 +130,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
               className="flex items-center gap-3 bg-green-50 text-green-700 rounded-2xl px-5 py-3.5"
             >
               <CheckCircle2 size={18} />
-              <span className="font-bold text-sm">Question submitted! You'll hear back in 24–48 hours.</span>
+              <span className="font-bold text-sm">{"Question submitted! You'll hear back in 24–48 hours."}</span>
             </motion.div>
           ) : (
             <button
@@ -143,7 +143,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
             </button>
           )}
 
-          <div className="flex items-center justify-around pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-1">
             {[
               { icon: CheckCircle2, label: 'Detailed written response' },
               { icon: CheckCircle2, label: '24–48 hour turnaround' },

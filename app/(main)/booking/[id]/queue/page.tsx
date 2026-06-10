@@ -73,7 +73,7 @@ export default function QueuePage({ params }: { params: Promise<{ id: string }> 
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/15 border-2 border-white/30 mb-3">
             <span className="text-3xl font-black">#{POSITION}</span>
           </div>
-          <h2 className="text-2xl font-black tracking-tight">You're in the queue</h2>
+          <h2 className="text-2xl font-black tracking-tight">{"You're in the queue"}</h2>
           <p className="text-white/70 text-sm font-medium mt-1">
             Estimated wait: {waitMin}–{waitMin + 4} min
           </p>

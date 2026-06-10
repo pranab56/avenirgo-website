@@ -51,7 +51,7 @@ export default function RolePage() {
         className="w-full max-w-sm"
       >
         {/* Card */}
-        <div className="bg-white rounded-2xl p-10 flex flex-col items-center text-center shadow-sm mb-6">
+        <div className="bg-white rounded-lg p-10 flex flex-col items-center text-center shadow-sm mb-6">
           <CrystalBallIcon />
           <h2 className="text-2xl font-bold text-[#1A1A1A] mt-5 mb-2">Mediums</h2>
           <p className="text-sm text-[#666666] leading-relaxed">
@@ -62,7 +62,7 @@ export default function RolePage() {
         {/* Get Started */}
         <Link
           href="/login"
-          className="block w-full py-4 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-center text-sm transition-all active:scale-[0.98] shadow-lg shadow-violet-500/20"
+          className="block w-full py-4 rounded-lg bg-violet-700 hover:bg-violet-800 text-white font-bold text-center text-sm transition-all active:scale-[0.98] shadow-lg shadow-violet-500/20"
         >
           Get Started
         </Link>

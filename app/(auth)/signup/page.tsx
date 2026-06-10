@@ -1,13 +1,13 @@
 'use client';
 
 import { useSignUpMutation } from '@/features/auth/authApi';
+import { motion } from 'framer-motion';
 import { Eye, EyeOff } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { motion } from 'framer-motion';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -48,9 +48,8 @@ export default function SignupPage() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-7">
-          <div className="w-24 h-24 bg-violet-700 rounded-3xl flex flex-col items-center justify-center gap-1.5 shadow-lg">
-            <Image src="/icons/logo.png" alt="AvenirGo" width={38} height={38} className="object-contain" />
-            <span className="text-white font-bold text-xs">AvenirGo</span>
+          <div className="w-38 h-38 rounded-3xl">
+            <Image src="/icons/logo.png" alt="AvenirGo" width={1000} height={1000} className="object-contain rounded-lg" />
           </div>
         </div>
 
@@ -90,7 +89,7 @@ export default function SignupPage() {
                 placeholder="Enter your password"
                 className="w-full h-11 px-4 pr-11 rounded-lg border border-gray-300 bg-white text-sm text-[#1A1A1A] placeholder:text-gray-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
               />
-              <button type="button" onClick={() => setShowPassword(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <button type="button" onClick={() => setShowPassword(v => !v)} className="absolute cursor-pointer right-3 top-1/2 -translate-y-1/2 text-gray-400">
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
@@ -106,7 +105,7 @@ export default function SignupPage() {
                 placeholder="Re-write your password"
                 className="w-full h-11 px-4 pr-11 rounded-lg border border-gray-300 bg-white text-sm text-[#1A1A1A] placeholder:text-gray-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
               />
-              <button type="button" onClick={() => setShowConfirm(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <button type="button" onClick={() => setShowConfirm(v => !v)} className="absolute right-3 cursor-pointer top-1/2 -translate-y-1/2 text-gray-400">
                 {showConfirm ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>

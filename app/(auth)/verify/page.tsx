@@ -1,12 +1,12 @@
 'use client';
 
 import { useVerifyOtpMutation } from '@/features/auth/authApi';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { motion } from 'framer-motion';
 
 const OTP_LENGTH = 5;
 const RESEND_SECONDS = 60;
@@ -83,10 +83,9 @@ export default function VerifyPage() {
         className="w-full max-w-xs"
       >
         {/* Logo */}
-        <div className="flex justify-center mb-8">
-          <div className="w-24 h-24 bg-violet-700 rounded-3xl flex flex-col items-center justify-center gap-1.5 shadow-lg">
-            <Image src="/icons/logo.png" alt="AvenirGo" width={38} height={38} className="object-contain" />
-            <span className="text-white font-bold text-xs">AvenirGo</span>
+        <div className="flex justify-center mb-7">
+          <div className="w-38 h-38 rounded-3xl">
+            <Image src="/icons/logo.png" alt="AvenirGo" width={1000} height={1000} className="object-contain rounded-lg" />
           </div>
         </div>
 
@@ -107,7 +106,7 @@ export default function VerifyPage() {
               value={d}
               onChange={e => handleChange(i, e.target.value)}
               onKeyDown={e => handleKeyDown(i, e)}
-              className="w-12 h-12 text-center text-xl font-bold text-[#1A1A1A] bg-white border border-gray-300 rounded-xl outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+              className="w-12 h-12 text-center text-xl font-bold text-[#1A1A1A] bg-white border border-gray-300 rounded-sm outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
             />
           ))}
         </div>
@@ -123,7 +122,7 @@ export default function VerifyPage() {
 
           <Link
             href="/login"
-            className="block w-full py-3.5 rounded-lg border-2 border-violet-400 text-violet-600 hover:bg-violet-50 font-bold text-sm text-center transition-all"
+            className="block w-full py-3.5 rounded-lg  text-violet-600 font-medium text-sm text-center transition-all"
           >
             Back to Sign In
           </Link>
