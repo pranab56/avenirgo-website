@@ -94,13 +94,13 @@ export default function ProfilePage({ params }: { params: Promise<{ id: string }
           <div className="relative h-[140px] bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700">
             <button
               onClick={() => router.back()}
-              className="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
+              className="absolute top-4 left-4 w-9 cursor-pointer h-9 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
             >
               <ArrowLeft size={18} />
             </button>
             <button
               onClick={handleShare}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
+              className="absolute top-4 right-4 w-9 cursor-pointer h-9 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
               title={copied ? 'Copied!' : 'Share'}
             >
               <Share2 size={16} />

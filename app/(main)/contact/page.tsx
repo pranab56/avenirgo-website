@@ -51,7 +51,7 @@ export default function ContactPage() {
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[#1A1A1A] font-bold text-5xl md:text-6xl tracking-tight"
+            className="text-[#1A1A1A] font-medium text-5xl md:text-6xl tracking-tight"
           >
             Contact Us
           </motion.h1>
@@ -72,23 +72,23 @@ export default function ContactPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="max-w-7xl mx-auto bg-[#F8F8F8] rounded-[32px] overflow-hidden shadow-2xl border border-white/50 flex flex-col lg:flex-row p-3"
+          className=" bg-[#F8F8F8] rounded-lg overflow-hidden shadow-2xl border border-white/50 flex flex-col lg:flex-row p-3"
         >
           {/* Left Section: Contact Information */}
-          <div className="lg:w-[450px] bg-primary rounded-[28px] p-10 md:p-14 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:w-[450px] bg-primary rounded-lg p-10 md:p-14 text-white flex flex-col justify-between relative overflow-hidden">
             {/* Background Decorative Circles */}
             <div className="absolute bottom-[-100px] right-[-100px] w-64 h-64 bg-white/10 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl" />
 
             <div className="relative z-10 space-y-12">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tight">Contact Information</h2>
+                <h2 className="text-3xl font-medium tracking-tight">Contact Information</h2>
                 <p className="text-white/70 text-lg">Say something to start a live chat!</p>
               </div>
 
               <div className="space-y-10 pt-4">
-                <div className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all">
+                <div className="flex items-center gap-6 cursor-pointer group">
+                  <div className="w-12 h-12 cursor-pointer rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all">
                     <Phone size={24} />
                   </div>
                   <span className="text-lg font-medium">+1012 3456 789</span>
@@ -130,7 +130,7 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                 {/* First Name */}
                 <div className="space-y-2 group">
-                  <label className="text-sm font-bold text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">First Name</label>
+                  <label className="text-sm font-medium text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">First Name</label>
                   <input
                     {...register('firstName')}
                     type="text"
@@ -145,7 +145,7 @@ export default function ContactPage() {
 
                 {/* Last Name */}
                 <div className="space-y-2 group">
-                  <label className="text-sm font-bold text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Last Name</label>
+                  <label className="text-sm font-medium text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Last Name</label>
                   <input
                     {...register('lastName')}
                     type="text"
@@ -160,7 +160,7 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div className="space-y-2 group">
-                  <label className="text-sm font-bold text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Email</label>
+                  <label className="text-sm font-medium text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Email</label>
                   <input
                     {...register('email')}
                     type="email"
@@ -175,7 +175,7 @@ export default function ContactPage() {
 
                 {/* Phone Number */}
                 <div className="space-y-2 group">
-                  <label className="text-sm font-bold text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Phone Number</label>
+                  <label className="text-sm font-medium text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Phone Number</label>
                   <input
                     {...register('phone')}
                     type="tel"
@@ -191,7 +191,7 @@ export default function ContactPage() {
 
               {/* Subject Selection */}
               <div className="space-y-6">
-                <label className="text-base font-bold text-[#1A1A1A]">Select Subject?</label>
+                <label className="text-base font-medium text-[#1A1A1A]">Select Subject?</label>
                 <div className="flex flex-wrap gap-6">
                   {subjects.map((subject) => (
                     <button
@@ -209,7 +209,7 @@ export default function ContactPage() {
                         {selectedSubject === subject && <div className="w-2 h-2 rounded-full bg-white" />}
                       </div>
                       <span className={cn(
-                        "text-sm font-bold transition-colors",
+                        "text-sm font-medium transition-colors",
                         selectedSubject === subject ? "text-primary" : "text-[#1A1A1A]/60"
                       )}>
                         {subject}
@@ -222,7 +222,7 @@ export default function ContactPage() {
 
               {/* Message */}
               <div className="space-y-4 group">
-                <label className="text-sm font-bold text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Message</label>
+                <label className="text-sm font-medium text-[#1A1A1A]/60 group-focus-within:text-primary transition-colors">Message</label>
                 <textarea
                   {...register('message')}
                   placeholder="Write your message.."
@@ -239,7 +239,7 @@ export default function ContactPage() {
               <div className="flex justify-end pt-4">
                 <button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-white font-bold px-12 py-4 rounded-xl shadow-xl shadow-primary/30 transition-all active:scale-95"
+                  className="bg-primary hover:bg-primary/90 text-white font-medium px-12 py-4 rounded-sm cursor-pointer transition-all active:scale-95"
                 >
                   Send Message
                 </button>

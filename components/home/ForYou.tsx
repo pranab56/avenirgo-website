@@ -108,7 +108,7 @@ function MediumCard({ medium, index }: { medium: typeof MEDIUMS[0]; index: numbe
       </span>
 
       {/* Image */}
-      <div className="relative shrink-0 w-[110px] sm:w-[130px]">
+      <div className="relative shrink-0 w-[110px] sm:w-[140px]">
         <Image
           src={medium.image}
           alt={medium.name}
@@ -172,7 +172,7 @@ function MediumCard({ medium, index }: { medium: typeof MEDIUMS[0]; index: numbe
             <span>{medium.sessions}</span>
           </div>
 
-          <Link href={``} className="ml-auto">
+          <Link href={`/marketplace/${medium.id}`} className="ml-auto">
             <button className="bg-primary cursor-pointer text-white text-[12px] font-semibold px-4 py-1.5 rounded-sm transition-all active:scale-95 whitespace-nowrap">
               View Profile
             </button>

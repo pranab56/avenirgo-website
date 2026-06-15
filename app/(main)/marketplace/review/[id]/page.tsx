@@ -1,69 +1,17 @@
 'use client';
 
-import { ALL_MEDIUMS } from '../../data';
+import { Combobox } from '@/components/ui/combobox';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ChevronDown, Search, Star, X } from 'lucide-react';
+import { ArrowLeft, Search, Star, X } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { use, useRef, useState, useEffect } from 'react';
+import { use, useState } from 'react';
+import { ALL_MEDIUMS } from '../../data';
 
 const SORT_OPTIONS = ['Most Recent', 'Highest Rating', 'Lowest Rating'];
 const FILTER_OPTIONS = ['All Stars', '5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Star'];
 
-function useClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () => void) {
-  useEffect(() => {
-    const listener = (e: MouseEvent) => {
-      if (!ref.current || ref.current.contains(e.target as Node)) return;
-      handler();
-    };
-    document.addEventListener('mousedown', listener);
-    return () => document.removeEventListener('mousedown', listener);
-  }, [ref, handler]);
-}
-
-function Dropdown({ options, value, onChange }: { options: string[]; value: string; onChange: (v: string) => void }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useClickOutside(ref, () => setOpen(false));
-
-  return (
-    <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl font-bold text-sm text-[#1A1A1A] hover:bg-black/[0.03] shadow-sm transition-all"
-      >
-        {value}
-        <ChevronDown size={14} className={cn('text-violet-500 transition-transform duration-200', open && 'rotate-180')} />
-      </button>
-      <AnimatePresence>
-        {open && (
-          <motion.ul
-            initial={{ opacity: 0, y: -6, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.97 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full mt-2 right-0 z-50 bg-white border border-black/5 shadow-xl rounded-2xl py-2 min-w-[150px]"
-          >
-            {options.map(opt => (
-              <li key={opt}>
-                <button
-                  onClick={() => { onChange(opt); setOpen(false); }}
-                  className={cn(
-                    'w-full text-left px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-violet-50 hover:text-violet-600',
-                    value === opt ? 'text-violet-600 bg-violet-50/60' : 'text-[#1A1A1A]'
-                  )}
-                >
-                  {opt}
-                </button>
-              </li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 function StarRating({ rating, size = 14 }: { rating: number; size?: number }) {
   return (
@@ -128,13 +76,13 @@ export default function ReviewsPage({ params }: { params: Promise<{ id: string }
 
   return (
     <div className="min-h-screen bg-[#E5E5E5] pt-24 pb-20">
-      <div className="container mx-auto px-4 max-w-2xl">
+      <div className="container mx-auto px-4 max-w-4xl">
 
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <button
             onClick={() => router.back()}
-            className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1A1A1A] hover:shadow-md transition-all shrink-0"
+            className="w-10 h-10 rounded-full cursor-pointer bg-white shadow-sm flex items-center justify-center text-[#1A1A1A] hover:shadow-md transition-all shrink-0"
           >
             <ArrowLeft size={18} />
           </button>
@@ -150,7 +98,7 @@ export default function ReviewsPage({ params }: { params: Promise<{ id: string }
         </div>
 
         {/* Rating summary card */}
-        <div className="bg-white rounded-3xl p-6 shadow-sm mb-6 flex items-center gap-8">
+        <div className="bg-white rounded-lg p-6 shadow-sm mb-6 flex items-center gap-8">
           <div className="text-center shrink-0">
             <p className="text-5xl font-bold text-[#1A1A1A]">{medium.rating}</p>
             <div className="mt-1">
@@ -192,7 +140,7 @@ export default function ReviewsPage({ params }: { params: Promise<{ id: string }
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search reviews..."
-              className="w-full h-12 pl-11 pr-10 bg-white rounded-2xl shadow-sm outline-none focus:ring-2 focus:ring-violet-400/20 transition-all font-medium text-sm text-[#1A1A1A]"
+              className="w-full h-12 pl-11 pr-10 bg-white rounded-lg shadow-sm outline-none focus:ring-2 focus:ring-violet-400/20 transition-all font-medium text-sm text-[#1A1A1A]"
             />
             {search && (
               <button
@@ -212,8 +160,8 @@ export default function ReviewsPage({ params }: { params: Promise<{ id: string }
               )}
             </p>
             <div className="flex items-center gap-2">
-              <Dropdown options={FILTER_OPTIONS} value={filterStars} onChange={setFilterStars} />
-              <Dropdown options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} />
+              <Combobox options={FILTER_OPTIONS} value={filterStars} onValueChange={setFilterStars} searchPlaceholder="Filter by stars..." />
+              <Combobox options={SORT_OPTIONS} value={sortBy} onValueChange={setSortBy} searchPlaceholder="Sort by..." />
             </div>
           </div>
         </div>
@@ -241,7 +189,7 @@ export default function ReviewsPage({ params }: { params: Promise<{ id: string }
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ delay: i * 0.03, duration: 0.2 }}
-                  className="bg-white rounded-3xl p-5 shadow-sm"
+                  className="bg-white rounded-lg p-5 shadow-sm"
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-3">

@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Orienco Rapid Delivery",
-  description: "Orienco Rapid Delivery - Fast and reliable delivery services",
+  title: "AvenirGo - Your Trusted Platform for Psychic Readings and Spiritual Guidance",
+  description: "AvenirGo - Your Trusted Platform for Psychic Readings and Spiritual Guidance",
 };
 
 export default function RootLayout({

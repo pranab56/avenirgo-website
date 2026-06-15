@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { baseURL } from '@/utils/BaseURL';
 import { baseApi } from '@/utils/apiBaseQuery';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Bell, Calendar, Heart, LayoutDashboard, LogOut, Menu, MessageSquare, ShoppingBag, Wallet, X } from 'lucide-react';
+import { Bell, Calendar, Contact, Heart, LayoutDashboard, LogOut, Menu, ShoppingBag, Wallet, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -92,8 +92,8 @@ export function Navbar() {
   const menuItems = [
     { name: 'Marketplace', href: '/marketplace', icon: ShoppingBag },
     { name: 'Planning', href: '/planning', icon: Calendar },
-    { name: 'Reviews', href: '/reviews', icon: MessageSquare },
     { name: 'Favorites', href: '/favorites', icon: Heart },
+    { name: 'Contact Us', href: '/contact', icon: Contact },
   ];
 
   useEffect(() => {

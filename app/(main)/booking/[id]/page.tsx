@@ -1,8 +1,7 @@
 'use client';
 
-import { ALL_MEDIUMS } from '../../marketplace/data';
 import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -14,7 +13,8 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { use, useState, Suspense } from 'react';
+import { Suspense, use, useState } from 'react';
+import { ALL_MEDIUMS } from '../../marketplace/data';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -85,13 +85,13 @@ function BookingContent({ id }: { id: string }) {
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-20">
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto px-6 max-w-7xl">
 
         {/* Page header */}
         <div className="flex items-center gap-3 mb-6">
           <button
             onClick={() => router.back()}
-            className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center hover:shadow-md transition-all"
+            className="w-9 h-9 rounded-full bg-white shadow-sm cursor-pointer flex items-center justify-center hover:shadow-md transition-all"
           >
             <ArrowLeft size={18} className="text-[#1A1A1A]" />
           </button>
@@ -104,7 +104,7 @@ function BookingContent({ id }: { id: string }) {
           <div className="space-y-5">
 
             {/* Medium card */}
-            <div className="bg-white rounded-2xl p-5 flex items-center gap-4 shadow-sm">
+            <div className="bg-white rounded-lg  p-5 flex items-center gap-4 shadow-sm">
               <div className="w-14 h-14 rounded-full overflow-hidden shrink-0 border-2 border-gray-100">
                 <Image src={medium.image} alt={medium.name} width={56} height={56} className="object-cover w-full h-full" />
               </div>
@@ -123,8 +123,8 @@ function BookingContent({ id }: { id: string }) {
             </div>
 
             {/* Consultation type */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm space-y-4">
-              <h3 className="font-bold text-[#1A1A1A]">Choose Consultation Type</h3>
+            <div className="bg-white rounded-lg p-5 shadow-sm space-y-4">
+              <h3 className="font-medium">Choose Consultation Type</h3>
               <div className="space-y-3">
                 {([
                   { type: 'audio' as const, label: 'Audio Call', sub: 'Best 1-time voice consultation', Icon: Mic },
@@ -134,7 +134,7 @@ function BookingContent({ id }: { id: string }) {
                     key={type}
                     onClick={() => { setConsultType(type); setConfirmed(false); setSelectedHour(null); }}
                     className={cn(
-                      'w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-left',
+                      'w-full flex items-center gap-4 p-4 rounded-lg cursor-pointer border-2 transition-all text-left',
                       consultType === type
                         ? 'border-violet-500 bg-violet-50/50'
                         : 'border-gray-100 hover:border-violet-200'
@@ -161,7 +161,7 @@ function BookingContent({ id }: { id: string }) {
             {/* Date & Time */}
             <div className="bg-white rounded-2xl p-5 shadow-sm space-y-5">
               <div className="flex items-center justify-between flex-wrap gap-3">
-                <h3 className="font-bold text-[#1A1A1A]">Select Date & Time</h3>
+                <h3 className="font-medium">Select Date & Time</h3>
                 <div className="flex items-center gap-4 text-xs font-semibold text-[#666666]">
                   <span className="flex items-center gap-1.5">
                     <span className="w-3 h-3 rounded-sm border border-gray-300 bg-white" />
@@ -189,7 +189,7 @@ function BookingContent({ id }: { id: string }) {
                       setConfirmed(false);
                     }}
                     className={cn(
-                      'shrink-0 px-4 py-2 rounded-xl text-sm font-bold transition-all',
+                      'shrink-0 px-4 py-2 rounded-xl cursor-pointer text-sm font-bold transition-all',
                       selectedDateIdx === i
                         ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20'
                         : 'bg-gray-100 text-[#1A1A1A] hover:bg-gray-200'
@@ -212,12 +212,12 @@ function BookingContent({ id }: { id: string }) {
                       disabled={booked}
                       onClick={() => { setSelectedHour(hour); setConfirmed(false); }}
                       className={cn(
-                        'px-3 py-1.5 rounded-lg text-xs font-bold transition-all',
+                        'px-3 py-1.5 rounded-lg text-xs cursor-pointer font-bold transition-all',
                         booked
                           ? 'bg-gray-100 text-[#1A1A1A]/30 cursor-not-allowed'
                           : selectedHour === hour
-                          ? 'bg-violet-600 text-white shadow-md shadow-violet-500/20'
-                          : 'bg-white border border-gray-200 text-[#1A1A1A] hover:border-violet-400 hover:text-violet-600'
+                            ? 'bg-violet-600 text-white shadow-md shadow-violet-500/20'
+                            : 'bg-white border border-gray-200 text-[#1A1A1A] hover:border-violet-400 hover:text-violet-600'
                       )}
                     >
                       {booked ? 'Booked' : formatHour(hour)}
@@ -278,7 +278,7 @@ function BookingContent({ id }: { id: string }) {
                     onClick={handleConfirm}
                     disabled={!canConfirm}
                     className={cn(
-                      'w-full py-3.5 rounded-2xl font-bold text-sm transition-all',
+                      'w-full py-3.5 rounded-2xl font-bold cursor-pointer text-sm transition-all',
                       canConfirm
                         ? 'bg-violet-600 text-white hover:bg-violet-700 shadow-lg shadow-violet-500/20 active:scale-[0.98]'
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
@@ -293,7 +293,7 @@ function BookingContent({ id }: { id: string }) {
                     animate={{ opacity: 1, y: 0 }}
                     className="space-y-3"
                   >
-                    <div className="flex items-center gap-2 text-green-600 bg-green-50 rounded-xl px-4 py-2.5">
+                    <div className="flex items-center gap-2 cursor-pointer text-green-600 bg-green-50 rounded-xl px-4 py-2.5">
                       <CheckCircle2 size={16} />
                       <span className="text-sm font-bold">Booking Confirmed!</span>
                     </div>

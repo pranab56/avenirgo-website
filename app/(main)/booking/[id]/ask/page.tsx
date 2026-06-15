@@ -1,11 +1,11 @@
 'use client';
 
-import { ALL_MEDIUMS } from '../../../marketplace/data';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, FileText, Send } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { use, useState } from 'react';
+import { ALL_MEDIUMS } from '../../../marketplace/data';
 
 const MAX_CHARS = 1000;
 
@@ -70,13 +70,13 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-20">
-      <div className="container mx-auto px-6 max-w-2xl">
+      <div className="container mx-auto px-6 max-w-4xl">
 
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <button
             onClick={() => router.back()}
-            className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center hover:shadow-md transition-all"
+            className="w-9 h-9 rounded-full bg-white cursor-pointer shadow-sm flex items-center justify-center hover:shadow-md transition-all"
           >
             <ArrowLeft size={18} className="text-[#1A1A1A]" />
           </button>
@@ -92,7 +92,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
         </div>
 
         {/* Submit form */}
-        <div className="bg-white rounded-3xl p-6 shadow-sm mb-6 space-y-4">
+        <div className="bg-white rounded-lg p-6 shadow-sm mb-6 space-y-4">
           <div>
             <h2 className="font-bold text-lg text-[#1A1A1A]">Ask a Question</h2>
             <p className="text-sm text-[#666666] mt-0.5">
@@ -110,7 +110,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
               onChange={e => setQuestion(e.target.value.slice(0, MAX_CHARS))}
               placeholder="Type your detailed question here..."
               rows={6}
-              className="w-full resize-none rounded-2xl border border-black/8 bg-gray-50 p-4 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/25 outline-none focus:ring-2 focus:ring-violet-400/20 transition-all"
+              className="w-full resize-none rounded-lg border border-black/8 bg-gray-50 p-4 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/25 outline-none focus:ring-2 focus:ring-violet-400/20 transition-all"
             />
             <div className="flex items-center justify-between mt-1.5 text-xs text-[#666666]">
               <span className={question.length >= MAX_CHARS ? 'text-red-500 font-bold' : ''}>
@@ -136,7 +136,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
             <button
               onClick={handleSubmit}
               disabled={!question.trim()}
-              className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-violet-600 hover:bg-violet-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all active:scale-[0.98] shadow-lg shadow-violet-500/20"
+              className="w-full flex items-center justify-center gap-2 py-3.5 rounded-lg bg-violet-600 hover:bg-violet-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all active:scale-[0.98] shadow-lg shadow-violet-500/20"
             >
               <Send size={15} />
               Submit Question
@@ -171,7 +171,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white rounded-3xl p-5 shadow-sm space-y-3"
+                className="bg-white rounded-lg p-5 shadow-sm space-y-3"
               >
                 <div className="flex items-start justify-between gap-4">
                   <p className="font-semibold text-sm text-[#1A1A1A] leading-relaxed">{qa.question}</p>
@@ -179,7 +179,7 @@ export default function AskPage({ params }: { params: Promise<{ id: string }> })
                 </div>
 
                 {qa.answer ? (
-                  <div className="bg-violet-50 rounded-2xl p-4 space-y-2">
+                  <div className="bg-violet-50 rounded-lg p-4 space-y-2">
                     <p className="text-xs font-bold text-violet-600">{qa.answeredAt}</p>
                     <p className="text-sm text-[#1A1A1A]/80 leading-relaxed">{qa.answer}</p>
                   </div>
